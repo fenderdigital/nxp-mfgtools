@@ -68,4 +68,10 @@ add_custom_command(
 include_directories(${generated_files_dir})
 
 add_library( uuc SHARED ${SOURCES} )
+set_target_properties(uuc PROPERTIES
+    VERSION 1.0.0
+    SOVERSION 1
+    OUTPUT_NAME "uuc"
+)
+
 # add_library( uuc_s STATIC ${SOURCES} )

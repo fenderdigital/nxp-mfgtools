@@ -75,6 +75,12 @@ set(SOURCES
 )
 
 add_library(uuu_shared SHARED ${SOURCES})
+set_target_properties(uuu_shared PROPERTIES
+    VERSION 1.0.0
+    SOVERSION 1
+    OUTPUT_NAME "uuu_shared"
+)
+
 add_executable(uuu ${SOURCES})
 
 target_link_libraries(uuu uuu_shared uuc ${OPENSSL_LIBRARIES} ${LIBUSB_LIBRARIES} ${LIBZ_LIBRARIES} ${LIBZSTD_LIBRARIES} ${TINYXML2_LIBRARIES} dl bz2)
