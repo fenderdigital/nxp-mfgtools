@@ -74,10 +74,16 @@ set(SOURCES
 	${CLSTS}
 )
 
+add_library(uuu_shared SHARED ${SOURCES})
 add_executable(uuu ${SOURCES})
-target_link_libraries(uuu uuc_s ${OPENSSL_LIBRARIES} ${LIBUSB_LIBRARIES} ${LIBZ_LIBRARIES} ${LIBZSTD_LIBRARIES} ${TINYXML2_LIBRARIES} dl bz2)
 
-install(TARGETS uuu DESTINATION bin)
+target_link_libraries(uuu uuu_shared uuc ${OPENSSL_LIBRARIES} ${LIBUSB_LIBRARIES} ${LIBZ_LIBRARIES} ${LIBZSTD_LIBRARIES} ${TINYXML2_LIBRARIES} dl bz2)
+
 target_compile_definitions(uuu
     PRIVATE "TARGET_PATH=\"${CMAKE_INSTALL_PREFIX}/bin/uuu\""
 )
+target_compile_definitions(uuu_shared
+    PRIVATE "TARGET_PATH=\"${CMAKE_INSTALL_PREFIX}/bin/uuu\""
+)
+
+install(TARGETS uuu uuu_shared DESTINATION bin)

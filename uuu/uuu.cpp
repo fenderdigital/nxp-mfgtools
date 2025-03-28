@@ -893,7 +893,7 @@ int set_ignore_serial_number()
 #endif
 }
 
-int main(int argc, char **argv)
+int uuu(int argc, char **argv)
 {
 	if (auto_complete(argc, argv) == 0)
 		return 0;
@@ -1223,4 +1223,9 @@ int main(int argc, char **argv)
 	if(!g_verbose)
 		printf("\n\n\n");
 	return g_overall_status;
+}
+
+int main (int argc, char **argv)
+{
+	return uuu (argc, argv);
 }
